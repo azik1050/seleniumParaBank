@@ -1,6 +1,6 @@
 import pytest
 from api.helpers.pet import Pet
-from configs import BASE_URL
+from configs import API_BASE_URL
 from api.data.pet_data import data
 
 
@@ -9,7 +9,7 @@ from api.data.pet_data import data
 )
 def test_correct_pet_adding(pet_id, pet_name, pet_status):
     pet = Pet(
-        base_url=BASE_URL,
+        base_url=API_BASE_URL,
         pet_id=pet_id,
         pet_name=pet_name,
         pet_status=pet_status
@@ -24,7 +24,7 @@ def test_correct_pet_adding(pet_id, pet_name, pet_status):
 )
 def test_pet_find(pet_id, pet_name, pet_status):
     pet = Pet(
-        base_url=BASE_URL,
+        base_url=API_BASE_URL,
         pet_id=pet_id,
         pet_name=pet_name,
         pet_status=pet_status
@@ -34,3 +34,19 @@ def test_pet_find(pet_id, pet_name, pet_status):
     response = pet.find_pet()
     assert response.status_code == 200, 'Wrong status code'
     assert response.json() == pet.pet_json, 'Wrong body'
+
+
+@pytest.mark.parametrize(
+    ('pet_id', 'pet_name', 'pet_status'), data
+)
+def test_pet_removal(pet_id, pet_name, pet_status):
+    pet = Pet(
+        base_url=API_BASE_URL,
+        pet_id=pet_id,
+        pet_name=pet_name,
+        pet_status=pet_status
+    )
+    pet.add_pet()
+
+    response = pet.remove_pet()
+    assert response.status_code == 200, 'Wrong status code'

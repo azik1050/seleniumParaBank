@@ -43,4 +43,7 @@ class Pet:
         )
 
     def remove_pet(self):
-        pass
+        return requests.request(
+            method='DELETE',
+            url=f'{self.base_url}/pet/{self.pet_id}'
+        )
