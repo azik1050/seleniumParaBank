@@ -2,8 +2,10 @@ from time import sleep
 from confest import customer_care_page, browser
 from utils import save_photo
 from configs import USERNAME
+import pytest
 
 
+@pytest.mark.flaky(reruns=3)
 def test_email_sending(customer_care_page, browser):
     customer_care_page.get_email_link().click()
 

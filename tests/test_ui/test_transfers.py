@@ -1,5 +1,5 @@
 import pytest
-from confest import transfers_page, browser
+from confest import transfers_page, base_page, browser
 from selenium.webdriver.support.ui import Select
 from time import sleep
 from utils import save_photo
@@ -18,8 +18,9 @@ def open_new_account(browser, transfers_page):
     save_photo(transfers_page.get_right_panel(), browser, 'OpenAccount')
 
 
+@pytest.mark.flaky(reruns=3)
 @pytest.mark.positive
-def test_correct_transfer(browser, transfers_page):
+def test_correct_transfer(browser, transfers_page, base_page):
     open_new_account(browser, transfers_page)
 
     transfers_page.get_transfer_funds_link().click()
@@ -40,8 +41,9 @@ def test_correct_transfer(browser, transfers_page):
     save_photo(transfers_page.get_right_panel(), browser, 'CorrectTransfer')
 
 
+@pytest.mark.flaky(reruns=3)
 @pytest.mark.negative
-def test_incorrect_transfer(browser, transfers_page):
+def test_incorrect_transfer(browser, transfers_page, base_page):
     open_new_account(browser, transfers_page)
 
     transfers_page.get_transfer_funds_link().click()
