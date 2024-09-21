@@ -12,6 +12,10 @@ class BasePage:
         panel = self.browser.find_element(By.ID, base_page_locators['right_panel']['block'])
         return panel
 
+    def get_right_panel_p(self):
+        elements = self.browser.find_elements(By.TAG_NAME, 'p')
+        return elements
+
     def get_right_panel_header(self):
         header = self.browser.find_element(By.CLASS_NAME, base_page_locators['right_panel']['header'])
         return header
@@ -42,4 +46,8 @@ class BasePage:
 
     def get_request_loan_link(self):
         link = self.browser.find_element(By.LINK_TEXT, 'Request Loan')
+        return link
+
+    def get_email_link(self):
+        link = self.browser.find_element(By.LINK_TEXT, base_page_locators['email_link'])
         return link

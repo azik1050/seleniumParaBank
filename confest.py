@@ -2,6 +2,7 @@ from selenium import webdriver
 from configs import UI_BASE_URL
 from ui.pages.base_page import BasePage
 from ui.pages.transfers_page import TransferFundsPage
+from ui.pages.customer_care_page import CustomerCarePage
 from utils import auth
 import pytest
 
@@ -25,3 +26,9 @@ def base_page(browser):
 def transfers_page(browser):
     transfers_page = TransferFundsPage(browser)
     return transfers_page
+
+
+@pytest.fixture()
+def customer_care_page(browser):
+    customer_care_page = CustomerCarePage(browser)
+    return customer_care_page
