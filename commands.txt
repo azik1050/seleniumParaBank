@@ -1,0 +1,4 @@
+# to fun negative tests
+pytest -m negative
+# to fun positive tests
+pytest -m positive
