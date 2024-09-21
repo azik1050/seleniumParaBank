@@ -2,3 +2,6 @@
 pytest -m negative
 # to fun positive tests
 pytest -m positive
+
+# to get the report
+pytest --html=report.html
