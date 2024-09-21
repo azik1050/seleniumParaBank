@@ -7,7 +7,6 @@ class BasePage:
 
     def __init__(self, browser: webdriver.Chrome):
         self.browser = browser
-        self.links = browser.find_elements(By.TAG_NAME, 'a')
 
     def get_right_panel(self):
         panel = self.browser.find_element(By.ID, base_page_locators['right_panel']['block'])
@@ -18,22 +17,29 @@ class BasePage:
         return header
 
     def get_open_new_account_link(self):
-        return self.links[0]
+        link = self.browser.find_element(By.LINK_TEXT, 'Open New Account')
+        return link
 
     def get_accounts_overview_link(self):
-        return self.links[1]
+        link = self.browser.find_element(By.LINK_TEXT, 'Accounts Overview')
+        return link
 
     def get_transfer_funds_link(self):
-        return self.links[2]
+        link = self.browser.find_element(By.LINK_TEXT, 'Transfer Funds')
+        return link
 
     def get_bill_pay_link(self):
-        return self.links[3]
+        link = self.browser.find_element(By.LINK_TEXT, 'Bill Pay')
+        return link
 
     def get_find_transactions_link(self):
-        return self.links[4]
+        link = self.browser.find_element(By.LINK_TEXT, 'Find Transactions')
+        return link
 
     def get_update_contact_info_link(self):
-        return self.links[5]
+        link = self.browser.find_element(By.LINK_TEXT, 'Update Contact Info')
+        return link
 
     def get_request_loan_link(self):
-        return self.links[6]
+        link = self.browser.find_element(By.LINK_TEXT, 'Request Loan')
+        return link

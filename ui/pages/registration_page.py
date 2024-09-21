@@ -139,7 +139,7 @@ class Authentication(RegistrationPage, BasePage):
         self._fill_registration_form()
         self._get_registration_button().click()
         try:
-            if self.get_right_panel_header().text == f'Welcome {self.get_right_panel_header()}':
+            if self.get_right_panel_header().text == f'Welcome {self.username}':
                 self.registered = True
         except NoSuchElementException:
             return
